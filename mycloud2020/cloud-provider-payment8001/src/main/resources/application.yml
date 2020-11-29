@@ -35,6 +35,8 @@ mybatis:
 eureka:
   instance:
     hostname: localhost # eureka 服务器的实例名称
+    instance-id: payment8001
+    prefer-ip-address: true
   client:
     # 表示是否将自己注册进入Eureka，默认为true
     register-with-eureka: true
@@ -46,5 +48,6 @@ eureka:
        defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
 logging:
   config: classpath:logback-spring.xml
+
 
 
