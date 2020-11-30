@@ -37,7 +37,7 @@ public class OrderController {
     }
 
 
-    @RequestMapping("/payment/postForObject")
+    @RequestMapping("/payment/postForEntity")
     public CommonResult<Payment> postForEntity(Payment payment){
         ResponseEntity<CommonResult> responseEntity =  restTemplate.postForEntity(PAYMENT_URL+"/payment/create",payment,CommonResult.class);
         log.info(responseEntity.getStatusCode()+"");
