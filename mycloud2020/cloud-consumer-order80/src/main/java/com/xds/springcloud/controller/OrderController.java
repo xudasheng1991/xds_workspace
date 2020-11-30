@@ -4,6 +4,7 @@ import com.xds.springcloud.entity.CommonResult;
 import com.xds.springcloud.entity.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,13 @@ public class OrderController {
         return restTemplate.getForObject(PAYMENT_URL+"/payment/getPaymentById/?id ="+id,CommonResult.class);
     }
 
+
+    @RequestMapping("/payment/postForObject")
+    public CommonResult<Payment> postForEntity(Payment payment){
+        ResponseEntity<CommonResult> responseEntity =  restTemplate.postForEntity(PAYMENT_URL+"/payment/create",payment,CommonResult.class);
+        log.info(responseEntity.getStatusCode()+"");
+        log.info(responseEntity.getBody().toString());
+        return responseEntity.getBody();
+    }
 
 }
